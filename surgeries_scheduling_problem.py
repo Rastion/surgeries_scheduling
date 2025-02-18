@@ -38,9 +38,9 @@ class SurgeriesSchedulingProblem(BaseProblem):
         #   Next num_surgeries lines: for each surgery, num_rooms integers (0 for compatible, 1 for incompatible)
 
         # Resolve relative path with respect to this module’s directory.
-        if not os.path.isabs(filename):
+        if not os.path.isabs(instance_file):
             base_dir = os.path.dirname(os.path.abspath(__file__))
-            filename = os.path.join(base_dir, filename)
+            instance_file = os.path.join(base_dir, instance_file)
 
         with open(instance_file) as f:
             lines = [line.strip() for line in f if line.strip()]
