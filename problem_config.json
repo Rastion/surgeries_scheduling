@@ -1,0 +1,53 @@
+{
+    "entry_point": "surgeries_scheduling_problem:SurgeriesSchedulingProblem",
+    "default_params": {
+      "instance_file": "instances/instancesurgery.txt"
+    },
+    "problem_type": "Surgeries Scheduling",
+    "description": "A hospital must schedule a set of surgeries into operating rooms while assigning nurses to each surgery. Each surgery has a prescribed time window, fixed duration, and a minimum number of nurses required. Rooms may be incompatible with certain surgeries, and nurses have shift start, end, and maximum duration constraints. The objective is to minimize the makespan—the time at which the last surgery finishes—while satisfying all constraints.",
+    "keywords": [
+      "surgery scheduling",
+      "operating rooms",
+      "nurse scheduling",
+      "hospital",
+      "makespan minimization",
+      "scheduling"
+    ],
+    "data_format": {
+      "instance_file": {
+        "format": "Line 1: num_rooms num_nurses num_surgeries. Line 2: minimum start times (hours) for each surgery. Line 3: maximum end times (hours) for each surgery. Line 4: durations (minutes) for each surgery. Line 5: number of nurses needed per surgery. Line 6: earliest shift start for each nurse (hours). Line 7: latest shift end for each nurse (hours). Line 8: maximum shift duration (hours). Next num_surgeries lines: for each surgery, num_rooms integers (0 for compatible, 1 for incompatible)."
+      }
+    },
+    "decision_variables": {
+      "surgery_room": {
+        "type": "list of int",
+        "description": "For each surgery, the operating room (0-indexed) in which it is scheduled."
+      },
+      "surgery_start": {
+        "type": "list of int",
+        "description": "For each surgery, the start time (in minutes)."
+      },
+      "surgery_end": {
+        "type": "list of int",
+        "description": "For each surgery, the end time (in minutes), equal to start time plus duration."
+      },
+      "nurse_assignment": {
+        "type": "list of lists of int",
+        "description": "For each nurse, the ordered list of surgeries (indices) assigned to that nurse."
+      }
+    },
+    "objective": {
+      "type": "minimization",
+      "function": "Makespan = max(surgery_end)",
+      "description": "Minimize the makespan, i.e., the maximum end time among all surgeries, while satisfying room compatibility, time-window, duration, and nurse shift constraints."
+    },
+    "solution_representation": "A dictionary with keys 'surgery_room', 'surgery_start', 'surgery_end', and 'nurse_assignment'.",
+    "compatible_optimizers": [
+      "genetic_algorithm",
+      "simulated_annealing",
+      "particle_swarm",
+      "tabu_search",
+      "rl_optimizer"
+    ]
+  }
+  
