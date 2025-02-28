@@ -3,15 +3,18 @@
     "default_params": {
       "instance_file": "instances/instancesurgery.txt"
     },
-    "problem_type": "Surgeries Scheduling",
+    "creator": "Rastion",
+    "type": "problem",
+    "problem_name": "Surgeries scheduling",
     "description": "A hospital must schedule a set of surgeries into operating rooms while assigning nurses to each surgery. Each surgery has a prescribed time window, fixed duration, and a minimum number of nurses required. Rooms may be incompatible with certain surgeries, and nurses have shift start, end, and maximum duration constraints. The objective is to minimize the makespan—the time at which the last surgery finishes—while satisfying all constraints.",
+    "link_to_dataset": "https://github.com/Rastion/surgeries_scheduling/blob/main/instances/instancesurgery.txt",
     "keywords": [
       "surgery scheduling",
       "operating rooms",
       "nurse scheduling",
       "hospital",
       "makespan minimization",
-      "scheduling"
+      "workforce"
     ],
     "data_format": {
       "instance_file": {
@@ -42,12 +45,8 @@
       "description": "Minimize the makespan, i.e., the maximum end time among all surgeries, while satisfying room compatibility, time-window, duration, and nurse shift constraints."
     },
     "solution_representation": "A dictionary with keys 'surgery_room', 'surgery_start', 'surgery_end', and 'nurse_assignment'.",
-    "compatible_optimizers": [
-      "genetic_algorithm",
-      "simulated_annealing",
-      "particle_swarm",
-      "tabu_search",
-      "rl_optimizer"
+    "formulations": [
+      ""
     ]
   }
   
